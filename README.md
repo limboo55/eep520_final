@@ -22,7 +22,7 @@ This is a 2D  game developed using the **ENVIRO** framework. Players control a *
 - **Cheat Mode** → Help you reach door quickly
 ### **Objective**
 Push **boxes**, time **jumps**, and dodge **enemies** to reach the **goal door** and **win**!
-![game demo](/media/demo1.mp4)
+![game demo](/media/demo1.gif)
 
 when you reach the door:
 ![](/media/victory.jpg)

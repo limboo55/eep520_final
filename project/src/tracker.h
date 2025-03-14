@@ -2,27 +2,42 @@
 #define __TRACKER_AGENT__H 
 
 #include "enviro.h"
-#include <cmath> // 用于数学计算
+#include <cmath> 
 
 using namespace enviro;
 
 class TrackerController : public Process, public AgentInterface {
 
     public:
-    TrackerController() : Process(), AgentInterface(),speed(40), robot_id(-1), tracking(false) {}
+    // Initialize controller with default values
+    TrackerController() : Process(), AgentInterface(),
+                         TRACKING_SPEED(40),
+                         CLOSE_RANGE(50),
+                         CLOSE_FACTOR(0.1),
+                         NORMAL_FACTOR(0.15),
+                         VISUAL_RANGE(100),
+                         DANGER_RANGE(30),
+                         COLLISION_THRESHOLD(0.5),
+                         robot_id(-1), 
+                         tracking(false) {}
 
     void init() {
         prevent_rotation();
+        
+        // Listen for robot startup event to get its ID
         watch("robot_start", [&](Event& e) {
             robot_id = e.value()["id"];
-            // std::cout << "Tracker: Found Robot with ID " << robot_id << " from start event" << std::endl;
             tracking = true;
         });
+        
+        // Reset position when reset button is clicked
         watch("button_click", [&](Event& e) {
             if (e.value()["value"] == "reset") {
-                teleport(initial_x, initial_y,0); 
+                teleport(initial_x, initial_y, 0); 
             }
         });
+        
+        // Add visual decoration (angry eyes and mouth)
         decorate(R"(<g>
             <circle cx="-5" cy="-3" r="3" style="fill:red;stroke:none"/>
             <circle cx="5" cy="-3" r="3" style="fill:red;stroke:none"/>
@@ -33,59 +48,53 @@ class TrackerController : public Process, public AgentInterface {
     }
 
     void start() {
-        
+        // Store initial position for reset functionality
         initial_x = x();
         initial_y = y(); 
-        
     }
 
     void update() {
         if (tracking && robot_id >= 0 && agent_exists(robot_id)) {
             try {
-                
+                // Get robot position
                 Agent& robot = find_agent(robot_id);
                 double robot_x = robot.x();
                 double robot_y = robot.y();
                 
-                
+                // Calculate distance to robot
                 double dx = robot_x - x();
                 double dy = robot_y - y();
                 double distance = sqrt(dx*dx + dy*dy);
                 
+                // Adjust speed based on distance
+                double current_speed = distance < CLOSE_RANGE ? 
+                                      TRACKING_SPEED * CLOSE_FACTOR : 
+                                      TRACKING_SPEED * NORMAL_FACTOR;
                 
-                // if (rand() % 100 == 0) { 
-                //     std::cout << "Tracker: distance to Robot = " << distance 
-                //               << ", dx=" << dx << ", dy=" << dy << std::endl;
-                // }
-                
-                
-                double current_speed = distance < 50 ? speed * 0.1 : speed * 0.15;
-                
-    
+                // Calculate direction vector
                 double dir_x = dx / (distance == 0 ? 1 : distance);
                 double dir_y = dy / (distance == 0 ? 1 : distance);
                 
-                
+                // Apply movement toward robot
                 omni_track_velocity(dir_x * current_speed, dir_y * current_speed, 5);
                 
-                
-                if (distance < 0.5) {
+                // Check for collision with robot
+                if (distance < COLLISION_THRESHOLD) {
                     emit(Event("tracker_collision", {{"robot_id", robot_id}}));
-                     
                 }
                 
-                if (distance < 100) {
-                    std::string color = distance < 30 ? "darkred" : "red";
+                // Update visual appearance based on distance
+                if (distance < VISUAL_RANGE) {
+                    std::string color = distance < DANGER_RANGE ? "darkred" : "red";
                     set_style({{"fill", color}, {"stroke", "black"}});
                 } else {
                     set_style({{"fill", "crimson"}, {"stroke", "black"}});
                 }
             } catch (std::exception& e) {
-                std::cout << "Tracker: Error tracking Robot: " << e.what() << std::endl;
                 tracking = false;
             }
         } else {
-    
+            // Slow down if not tracking
             omni_damp_movement();
         }
     }
@@ -93,10 +102,19 @@ class TrackerController : public Process, public AgentInterface {
     void stop() {}
 
     private:
-    double speed;
-    int robot_id; 
-    bool tracking; 
-    double initial_x, initial_y; 
+    // Tracking constants
+    const double TRACKING_SPEED;    // Base movement speed
+    const double CLOSE_RANGE;       // Distance threshold for speed adjustment
+    const double CLOSE_FACTOR;      // Speed multiplier when close to target
+    const double NORMAL_FACTOR;     // Speed multiplier when far from target
+    const double VISUAL_RANGE;      // Range for visual color change
+    const double DANGER_RANGE;      // Range for danger color indication
+    const double COLLISION_THRESHOLD; // Distance threshold for collision detection
+    
+    // State variables
+    int robot_id;                  // ID of the robot to track
+    bool tracking;                 // Flag indicating active tracking
+    double initial_x, initial_y;   // Initial position for reset
 };
 
 class Tracker : public Agent {

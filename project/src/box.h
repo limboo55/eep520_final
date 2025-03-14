@@ -28,7 +28,7 @@ class BoxController : public Process, public AgentInterface {
     void update() {
         // Apply damping to make the box movement feel more natural and prevent excessive sliding
         omni_damp_movement();
-        omni_apply_force(-300);
+        
     }
 
     void stop() {}

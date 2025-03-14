@@ -1,0 +1,19 @@
+{
+  "name": "Tracker",
+  "type": "noninteractive",
+  "description": "A ghost-like monster that tracks the robot through walls",
+  "shape": [
+    { "x": -15, "y": 15 },
+    { "x": 15, "y": 15 },
+    { "x": 15, "y": -15 },
+    { "x": -15, "y": -15 }
+  ],
+  "friction": {
+    "collision": 0,
+    "linear": 0,
+    "rotational": 0
+  },
+  "sensors": [],
+  "mass": 1,
+  "controller": "lib/tracker.so"
+}

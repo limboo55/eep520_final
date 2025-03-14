@@ -1,0 +1,19 @@
+{
+  "name": "Bouncer",
+  "type": "static",
+  "description": "A block that bounces the robot upward on contact",
+  "shape": [
+    { "x": -20, "y": -10 },
+    { "x": 20, "y": -10 },
+    { "x": 20, "y": 10 },
+    { "x": -20, "y": 10 }
+  ],
+  "friction": {
+    "collision": 0,
+    "linear": 0,
+    "rotational": 0
+  },
+  "sensors": [],
+  "mass": 1,
+  "controller": "lib/bouncer.so"
+}

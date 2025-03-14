@@ -1,0 +1,19 @@
+{
+  "name": "Box",
+  "type": "dynamic",
+  "description": "A  box for climbing",
+  "shape": [
+    { "x": -15, "y": -30 },
+    { "x": 15, "y": -30 },
+    { "x": 15, "y": 30 },
+    { "x": -15, "y": 30 }
+  ],
+  "friction": {
+    "collision": 10,
+    "linear": 40,
+    "rotational": 600
+  },
+  "sensors": [],
+  "mass": 30,
+  "controller": "lib/box.so"
+}

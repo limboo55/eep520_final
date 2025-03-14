@@ -1,0 +1,19 @@
+{
+  "name": "Door",
+  "type": "static",
+  "description": "The goal door - touch to win",
+  "shape": [
+    { "x": -20, "y": -30 },
+    { "x": 20, "y": -30 },
+    { "x": 20, "y": 30 },
+    { "x": -20, "y": 30 }
+  ],
+  "friction": {
+    "collision": 0,
+    "linear": 0,
+    "rotational": 0
+  },
+  "sensors": [],
+  "mass": 1,
+  "controller": "lib/door.so"
+}

@@ -1,0 +1,203 @@
+{   "name": "My Enviro Project",
+    "ip": "0.0.0.0",
+    "port": 8765,
+    "buttons": [
+        {
+            "name": "reset",
+            "label": "Reset Game",
+            "style": { "background": "white", "border-color": "black" }
+        },
+        {
+            "name": "cheat",
+            "label": "Cheat Mode",
+            "style": { "background": "white", "border-color": "black" }
+        }
+    ],
+    "agents": [
+        {
+            "definition": "defs/tracker.json",
+            "style": { "fill": "crimson", "stroke": "black" },
+            "position": {
+                "x": 300, 
+                "y": 200, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/bouncer.json",
+            "style": { "fill": "#FF5733", "stroke": "yellow" },
+            "position": {
+                "x": 200, 
+                "y": -70, 
+                "theta": 0
+            }
+        },  
+        {
+            "definition": "defs/robot.json",
+            "style": { "fill": "lightblue", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": 135, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/box.json",
+            "style": { "fill": "lightgreen", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": 350, 
+                "theta": 0
+            }
+        },
+        {  
+            "definition": "defs/obstacle.json",
+            "style": { "fill": "gray", "stroke": "none" },
+            "position": {
+                "x": -210, 
+                "y": 68, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/obstacle.json",
+            "style": { "fill": "gray", "stroke": "none" },
+            "position": {
+                "x": 210, 
+                "y": 68, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/ghost.json",
+            "style": { "fill": "lightgreen", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": 80, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/wander.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 0, 
+                "y": -280, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/wander.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 50, 
+                "y": -280, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/obstacle.json",
+            "style": { "fill": "gray", "stroke": "none" },
+            "position": {
+                "x": 50, 
+                "y": -350, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/obstacle.json",
+            "style": { "fill": "gray", "stroke": "none" },
+            "position": {
+                "x": 50, 
+                "y": -180, 
+                "theta": 0
+            }
+        },
+        {
+            "definition": "defs/wander.json",
+            "style": { "fill": "blue", "stroke": "black" },
+            "position": {
+                "x": 100, 
+                "y": -280, 
+                "theta": 0
+            }
+        },
+        
+        {
+            "definition": "defs/door.json",
+            "style": { "fill": "pink", "stroke": "black" },
+            "position": {
+                "x": -200, 
+                "y": -255, 
+                "theta": 0
+            }
+        }
+    ],
+    "statics": [
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -300, "y": -230 },
+                { "x": -300,  "y": -220 },
+                { "x": -100,  "y": -220 },
+                { "x": -100, "y": -230 }
+            ]
+        },
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -650, "y": -400 },
+                { "x": -650,  "y": 400 },
+                { "x": -640,  "y": 400 },
+                { "x": -640, "y": -400 }
+            ]
+        },
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": 650, "y": -400 },
+                { "x": 650,  "y": 400 },
+                { "x": 640,  "y": 400 },
+                { "x": 640, "y": -400 }
+            ]
+        },
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -650, "y": 400 },
+                { "x": 650,  "y": 400 },
+                { "x": 650,  "y": 390 },
+                { "x": -650, "y": 390 }
+            ]
+        },
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -650, "y": -400 },
+                { "x": 650,  "y": -400 },
+                { "x": 650,  "y": -390 },
+                { "x": -650, "y": -390 }
+            ]
+        },
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -550, "y": 185 },
+                { "x": -200, "y": 185 },
+                { "x": -200, "y": 175 },
+                { "x": -550, "y": 175 }
+            ]
+        },
+        
+        {
+            "style": { "fill": "gray", "stroke": "none" },
+            "shape": [
+                { "x": -270, "y": 90 },
+                { "x": 270, "y": 90 },
+                { "x": 270, "y": 80 },
+                { "x": -270, "y": 80 }
+            ]
+        }
+    ]
+}
+

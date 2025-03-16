@@ -1,7 +1,7 @@
 # **Jumper Game**
 
 ## **Project Introduction**
-This is a 2D  game developed using the **ENVIRO** framework. Players control a **robot** character to navigate **obstacles** and **platforms**, avoid **enemies**, and reach the **goal door**. The game features **classic platforming mechanics**, including **moving platforms, tracking enemies, and physics-based interactions**.
+This is a 2D  game developed using the **ENVIRO** framework. Players control a **robot** character to navigate obstacles and platforms, avoid **enemies**, and reach the **goal door**. The game features classic platforming mechanics, including moving platforms, tracking enemies, and physics-based interactions.
 
 ## **Game Features & Mechanics**
 ### **Characters**
@@ -44,7 +44,7 @@ git clone https://github.com/limboo55/eep520_final.git
 ```
 3. Change to the project directory
 ```bash
-cd ./project
+cd eep520_final/project
 ```
 4. Before running the Docker container, you can replace **$PWD** with your project folder path. This command will automatically download the required Docker image if it’s not available locally.
 

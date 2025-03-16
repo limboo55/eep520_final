@@ -4,19 +4,8 @@
 *.exe
 *.out
 *.dll
-*.so
 *.dylib
 *.a
-*.lib
-
-
-build/
-bin/
-lib/
-
-
-
-
 .DS_Store
 .vscode/
 
